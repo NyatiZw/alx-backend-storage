@@ -1,0 +1,8 @@
+//Script that displays the number of documents in the collection
+#!/usr/bin/bash
+
+count=$(mongo --quiet --eval 'db.school.countDocuments()')
+
+echo "$count"
+
+echo "bye"

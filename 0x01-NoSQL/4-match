@@ -9,3 +9,5 @@ fi
 db_name="$1"
 
 mongo "$db_name" --quiet --eval 'db.school.find({ "name": "Holberton school" })'
+
+echo "bye"
