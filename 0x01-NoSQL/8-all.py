@@ -15,9 +15,10 @@ def list_all(mongo_collection: Collection):
     try:
         documents = list(mongo_collection.find({}))
         return documents
-    expect Exception as e:
+    except Exception as e:
         print(f"An error occurred: {e}")
         return []
 
 
 if __name__ == "__main__":
+    main()
