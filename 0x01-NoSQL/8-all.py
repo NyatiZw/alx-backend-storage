@@ -3,7 +3,6 @@
 
 
 from pymongo.collection import Collection
-from pymongo import MongoClient
 
 
 def list_all(mongo_collection):
@@ -11,4 +10,5 @@ def list_all(mongo_collection):
         documents = list(mongo_collection.find({}))
         return documents
     except Exception as e:
+        print("{e}")
         return []
