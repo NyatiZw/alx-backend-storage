@@ -21,4 +21,3 @@ def list_all(mongo_collection: Collection):
 
 
 if __name__ == "__main__":
-    main()       
