@@ -15,7 +15,6 @@ class Cache:
     Redis using randomly generated key
     """
 
-
     def __init__(self):
         """
         Initialize the Cache class and connect to Redis.
@@ -38,6 +37,7 @@ class Cache:
         key = str(uuid.uuid4())
         self._redis.set(key, data)
         return key
+
 
 def count_calls(method: Callable):
     @wraps(method)
