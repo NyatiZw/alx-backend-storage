@@ -1,10 +1,8 @@
 // Script
 #!/usr/bin/bash
 
-db_name="$1"
-
 document='{
   "name": "Holberton school"
 }'
 
-mongo "db_name" --eval "db.school.insert($document)"
+mongo --eval "db.school.insert($document)"
