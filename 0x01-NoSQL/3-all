@@ -1,0 +1,4 @@
+//Script that lists all documents in a collection
+#!/usr/bin/bash
+
+mongo --quiet --eval 'db.school.find()'
