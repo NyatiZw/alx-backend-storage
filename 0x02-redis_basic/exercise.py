@@ -10,10 +10,9 @@ class Cache:
     """
     This class represents a caching mechanism using Redis.
 
-    It allows you to store data in 
+    It allows you to store data in
     Redis using randomly generated key
     """
-
 
     def __init__(self):
         """
@@ -40,4 +39,4 @@ class Cache:
 
 
 if __name__ == "__main__":
-   pass 
+    pass
