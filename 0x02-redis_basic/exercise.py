@@ -3,7 +3,8 @@
 
 import uuid
 import redis
-from typing import Union
+from typing import Union, Callable
+from functools import wraps
 
 
 class Cache:
@@ -13,6 +14,7 @@ class Cache:
     It allows you to store data in
     Redis using randomly generated key
     """
+
 
     def __init__(self):
         """
@@ -48,4 +50,4 @@ def count_calls(method: Callable):
 
 
 if __name__ == "__main__":
-    pass
+    main()
