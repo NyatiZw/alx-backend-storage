@@ -2,3 +2,5 @@
 #!/usr/bin/bash
 
 mongo --quiet --eval 'db.school.find()'
+
+echo "bye"
