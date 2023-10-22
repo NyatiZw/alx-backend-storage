@@ -6,13 +6,15 @@ from pymongo import MongoClient
 
 
 def list_all(mongo_collection):
-    client = MongoClient("localhost", 27017, maxPoolSize=50)
-    db = client.localhost
-    collection = db['chain']
-    cursor = collection.find({})
+    cursor = mongo_collection.find({})
     for document in cursor:
         print(document)
 
 
 if __name__ == '__main__':
-    pass
+    client = MongoClient("localhost", 27017, maxPoolSize=50)
+    db = client.localhost
+    collection = db['chain']
+    cursor = collection.find({})
+
+    list_all(collection)
