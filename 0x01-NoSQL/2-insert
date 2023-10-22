@@ -6,3 +6,5 @@ document='{
 }'
 
 mongo --eval "db.school.insert($document)"
+
+echo "bye"
