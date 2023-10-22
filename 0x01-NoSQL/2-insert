@@ -1,12 +1,6 @@
 // Script that inserts a document in a collection
 #!/usr/bin/bash
 
-document='{
-  "name": "Holberton school"
-}'
-
-mongo --eval "db.school.insert($document)"
-
-echo "WriteResult({ "$document" : 1 })"
+mongo --eval "db.school.insert(Holberton school)"
 
 echo "bye"
