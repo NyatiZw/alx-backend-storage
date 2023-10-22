@@ -1,4 +1,4 @@
-// Script
+// Script that inserts a document in a collection
 #!/usr/bin/bash
 
 document='{
@@ -6,5 +6,7 @@ document='{
 }'
 
 mongo --eval "db.school.insert($document)"
+
+echo "WriteResult({ "$document" : 1 })"
 
 echo "bye"
