@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """This is a script for listing all documents"""
 
-from pymongo.collection import Collection
+from pymongo import Collection
 
 def list_all(mongo_collection: Collection):
     """Lists all documents in the given collection
