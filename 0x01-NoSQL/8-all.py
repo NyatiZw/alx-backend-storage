@@ -1,20 +1,14 @@
 #!/usr/bin/env python3
 """This is a script for listing all documents"""
 
+
 from pymongo.collection import Collection
+from pymongo import MongoClient
 
-def list_all(mongo_collection: Collection):
-    """Lists all documents in the given collection
 
-    Args:
-        mongo_collection (pymongo.collection.Collection): Collection
-
-    Returns:
-        list: List of documents
-    """
+def list_all(mongo_collection):
     try:
         documents = list(mongo_collection.find({}))
         return documents
     except Exception as e:
-        print(f"An error occurred: {e}")
         return []
