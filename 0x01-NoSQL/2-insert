@@ -3,4 +3,8 @@
 
 db_name="$1"
 
-mongo --eval "db.getSiblingDB('$db_name').school.insert({ name: 'Holberton school' })"
+document='{
+  "name": "Holberton school"
+}'
+
+mongo "db_name" --eval "db.school.insert($document)"
