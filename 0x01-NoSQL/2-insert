@@ -1,0 +1,6 @@
+// Script
+#!/usr/bin/bash
+
+db_name="$1"
+
+mongo --eval "db.getSiblingDB('$db_name').school.insert({ name: 'Holberton school' })"
