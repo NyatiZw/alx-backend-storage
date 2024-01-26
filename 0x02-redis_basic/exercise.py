@@ -93,7 +93,7 @@ def call_history(method: Callable):
         output_key = method.__qualname__ + ":outputs"
         self._redis.rpush(input_key, str(args))
         output = method(self, *args, **kwargs)
-        self.redis.rpush(output_key, str(output))
+        self._redis.rpush(output_key, str(output))
 
         return output
 
@@ -101,4 +101,4 @@ def call_history(method: Callable):
 
 
 if __name__ == "__main__":
-    main()
+    pass
