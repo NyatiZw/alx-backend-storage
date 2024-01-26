@@ -78,6 +78,14 @@ class Cache:
         return self.get(key, fn=int)
 
 
+def count_calls(method: Callable):
+    @wraps(method)
+    def wrapper(self, *args, **kwargs):
+        key = method.__qualname__
+        self._redis.incr(key)
+        return method(self, *args, **kwargs)
+
+
 def call_history(method: Callable):
     @wraps(method)
     def wrapper(self, *args, **kwargs):
