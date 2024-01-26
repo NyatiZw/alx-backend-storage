@@ -26,6 +26,7 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
 
+    @count_calls
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """
         Store the input data in Redis
@@ -67,7 +68,7 @@ class Cache:
         """
         return self.get(key, fn=str)
 
-    def gwt_int(self, key: str) -> Union[int, None]:
+    def get_int(self, key: str) -> Union[int, None]:
         """
         Retrieve integer data
 
