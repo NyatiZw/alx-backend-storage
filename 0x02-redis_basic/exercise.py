@@ -26,7 +26,7 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
 
-    @count_calls
+    @call_history
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """
         Store the input data in Redis
@@ -78,12 +78,16 @@ class Cache:
         return self.get(key, fn=int)
 
 
-def count_calls(method: Callable):
+def call_history(method: Callable):
     @wraps(method)
     def wrapper(self, *args, **kwargs):
-        key = method.__qualname__
-        self._redis.incr(key)
-        return method(self, *args, **kwargs)
+        input_key = method.__qualname__ + ":inputs"
+        output_key = method.__qualname__ + ":outputs"
+        self._redis.rpush(input_key, str(args))
+        output = method(self, *args, **kwargs)
+        self.redis.rpush(output_key, str(output))
+
+        return output
 
     return wrapper
 
