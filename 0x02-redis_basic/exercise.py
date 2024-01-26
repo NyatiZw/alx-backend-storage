@@ -77,6 +77,21 @@ class Cache:
         """
         return self.get(key, fn=int)
 
+    def replay(self, method: Callable):
+        """
+        Display the history of calls for a particular function.
+
+        :param method: The function for which to display the history
+        """
+        input_key = method.__qualname__ + ":inputs"
+        output_key = method.__qualname__ + ":outputs"
+
+        inputs = self._redis.lrange(input_key, 0, -1)
+        outputs = self._redis.lrange(output_key, 0, -1)
+
+        for input_data, output_data in zip(inputs, outputs):
+            print(f"Input: {input_data}, Output: {output_data}")
+
 
 def count_calls(method: Callable):
     @wraps(method)
