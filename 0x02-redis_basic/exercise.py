@@ -38,6 +38,44 @@ class Cache:
         self._redis.set(key, data)
         return key
 
+    @count_calls
+    def get(self, key: str, fn: Callable = None) -> Union[
+            str,
+            bytes,
+            int,
+            float,
+            None
+       ]:
+        """
+        Retrieve data from Redis based on the provided key.
+
+        :param key: The key to retrieve data
+        :param fn: Optional callable to convert data back
+        :return: Data retrieved from Redis, or None
+        """
+        data = self._redis.get(key)
+        if data is not None and fn is not None:
+            return fn(data)
+        return data
+
+    def get_str(self, key: str) -> Union[str, None]:
+        """
+        Retrieve string data from Redis based on key
+
+        :param key: Key to retrieve string data
+        :return: The string data
+        """
+        return self.get(key, fn=str)
+
+    def gwt_int(self, key: str) -> Union[int, None]:
+        """
+        Retrieve integer data
+
+        :param key: The key to retrieve int data
+        :return: the integer data from Redis
+        """
+        return self.get(key, fn=int)
+
 
 def count_calls(method: Callable):
     @wraps(method)
